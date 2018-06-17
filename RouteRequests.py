@@ -15,12 +15,18 @@ def getroute(ori, dest):
   data = response.json()
   print(data)
   return data
-getroute(ori, dest)
 def getnames(ori,dest):
   import json
   import requests
   urlN = "https://esi.evetech.net/latest/universe/names/?datasource=tranquility"
   dataN = json.dumps([ori,dest])
   N = requests.post(url = urlN, data = dataN)
-  print(N.text)
+  if N.status_code != 200:
+     print('Status:', response.status_code, 'Problem with the request. Exiting.')
+     exit()
+  names = N.json()
+  name1 = names[0]['name']
+  name2 = names[1]['name']
+  print('Route from:', name1,'to', name2)
+getroute(ori, dest)
 getnames(ori, dest)
