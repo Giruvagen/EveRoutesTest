@@ -10,16 +10,16 @@ client = EsiClient(
     raw_body_only=True,  # default False, set to True to never parse response and only return raw JSON string content.
 )
 
-# generate the operation tuple
-# the parameters given are the actual parameters the endpoint requires
 route_find = app.op['get_route_origin_destination'](
     origin=30002187,
     destination=30000142,
     flag='shortest'
 )
 
-raw_response = client.request(route_find, raw_body_only=True)
+response = client.request(route_find)
 
-print(raw_response.raw)
+
+print(response.header)
+
 
 
