@@ -13,6 +13,24 @@ class MyApp(QtWidgets.QMainWindow, Ui_MainWindow):
     self.ui.setupUi(self)
     self.ui.get_route.clicked.connect(self.routeNames)
 
+  def routeNames(self):
+    import json
+    import requests
+    route = self.getRoute(self.getID())
+    dataR = json.dumps(route)
+    urlR = "https://esi.evetech.net/latest/universe/names/?datasource=tranquility"
+    R = requests.post(url = urlR, data = dataR)
+    routeN = R.json()
+    routeO = []
+    for ns in routeN:
+      na = ns['name']
+      routeO.append(na)
+    final = ''
+    for out in routeO:
+      final += out + ' to '
+    final = str(final)
+    self.results.setText(final)
+
   def getID(self):
     oriname = str(self.ui.ori_box.toPlainText())
     destname = str(self.ui.dest_box.toPlainText())
@@ -47,23 +65,6 @@ class MyApp(QtWidgets.QMainWindow, Ui_MainWindow):
       exit()
     data = response.json()
     return data
-  def routeNames(self):
-    import json
-    import requests
-    route = self.getRoute(self.getID())
-    dataR = json.dumps(route)
-    urlR = "https://esi.evetech.net/latest/universe/names/?datasource=tranquility"
-    R = requests.post(url = urlR, data = dataR)
-    routeN = R.json()
-    routeO = []
-    for ns in routeN:
-      na = ns['name']
-      routeO.append(na)
-    final = ''
-    for out in routeO:
-      final += out + ' to '
-    final = str(final)
-    self.results.setText(final)
 
 if __name__ == "__main__":
   app = QApplication(sys.argv)
@@ -71,4 +72,3 @@ if __name__ == "__main__":
   window = MyApp()
   window.show()
   sys.exit(app.exec_())
-
