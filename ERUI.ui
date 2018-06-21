@@ -6,12 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>422</width>
-    <height>544</height>
+    <width>297</width>
+    <height>541</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>flcl.jpg</normaloff>flcl.jpg</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTextEdit" name="ori_box">
@@ -34,16 +41,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="results">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>110</y>
-      <width>251</width>
-      <height>161</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="get_route">
     <property name="geometry">
      <rect>
@@ -57,13 +54,23 @@
      <string>Get Route</string>
     </property>
    </widget>
+   <widget class="QListWidget" name="results">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>241</width>
+      <height>371</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>422</width>
+     <width>297</width>
      <height>21</height>
     </rect>
    </property>

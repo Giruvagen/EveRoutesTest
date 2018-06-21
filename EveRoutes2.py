@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import uic
 
@@ -25,11 +25,9 @@ class MyApp(QtWidgets.QMainWindow, Ui_MainWindow):
     for ns in routeN:
       na = ns['name']
       routeO.append(na)
-    final = ''
-    for out in routeO:
-      final += out + ' to '
-    final = str(final)
-    self.ui.results.setText(final)
+    listWidget = QListWidget()
+    self.ui.results.clear()
+    self.ui.results.addItems(routeO)
 
   def getID(self):
     oriname = str(self.ui.ori_box.toPlainText())
